@@ -13,12 +13,32 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: '<p>Hola Vue</p>'
+                    event: "submit",
+                    counter: 0
                 };
             },
-            template: '<div v-html="text"></div>'
+            methods: {
+                submit(e) {
+                    this.counter++;
+                }
+            },
+            template: '<form v-on:[event].prevent="submit"><button >{{ counter }}</button></form>'
         }).mount("#app");
         console.log(vm);
     </script>
 </body>
 </html>
+<!-- template: '<button v-on:click="increment">{{ counter }}</button>'  para que reconozca los clicks-->
+<!--const vm = Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                };
+            },
+            methods: {
+                increment() {
+                    this.counter++;
+                }
+            },
+            template: '<button v-on:click="increment">{{ counter }}</button>'
+        }).mount("#app"); -->
